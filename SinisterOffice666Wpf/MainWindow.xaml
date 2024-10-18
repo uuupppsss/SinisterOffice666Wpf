@@ -1,0 +1,48 @@
+﻿<Window x:Class="SinisterOffice666Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SinisterOffice666Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <TabItem Header="Сотрудники" >
+                <StackPanel>
+                    <ListView></ListView>
+                    <Button Content="Добавить сотрудника" />
+                    <Button Content="Удалить сотрудника" />
+                    <Button Content="Изменить сотрудника" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Стелажи">
+                <StackPanel>
+                    <ListView></ListView>
+                    <Button Content="Добавить новый" />
+                    <Button Content="Обновить" />
+                    <Button Content="Назначить сотрудника" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Утилизация">
+                <StackPanel>
+                    <ListView></ListView>
+                    <Button Content="Утилизировать" />
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+
+        
+    </Grid>
+</Window>
