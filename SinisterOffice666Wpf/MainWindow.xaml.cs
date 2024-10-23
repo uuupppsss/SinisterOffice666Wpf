@@ -10,15 +10,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using SinisterOffice666.DB;
+
 
 namespace SinisterOffice666Wpf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window,INotifyPropertyChanged
     {
-
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public List<Devil> Devils {  get; set; }
+        public List<Rack> Racks { get; set; }
 
         HttpClient httpClient=new HttpClient();
         public MainWindow()
@@ -26,8 +31,12 @@ namespace SinisterOffice666Wpf
             InitializeComponent();
             httpClient.BaseAddress = new Uri("http://localhost:5148/api/");
             DataContext=this;
+            GetDevilsList();
         }
 
-
+        private async void GetDevilsList()
+        {
+            Devils = await httpClient.GetFromJsonAsync<List<Devil>>("DevilsController/GetDevils");
+        }
     }
 }

@@ -10,7 +10,17 @@
         <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <TabItem Header="Сотрудники" >
                 <StackPanel>
-                    <ListView></ListView>
+                    <ListView ItemsSource="{Binding Devils}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Nick}"/>
+                                    <TextBlock Text="{Binding Rank}"/>
+                                    <TextBlock Text="{Binding Year}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Button Content="Добавить сотрудника" />
                     <Button Content="Удалить сотрудника" />
                     <Button Content="Изменить сотрудника" />
@@ -18,18 +28,26 @@
             </TabItem>
             <TabItem Header="Стелажи">
                 <StackPanel>
-                    <ListView></ListView>
+                    <ListView ItemsSource="{Binding Racks}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Title}"/>
+                                    <TextBlock Text="{Binding YearBuy}"/>
+                                    <TextBlock Text="{Binding UseCount}"/>
+                                    <TextBlock Text="{Binding CurrentCount}"/>
+                                </StackPanel>                                
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Button Content="Добавить новый" />
                     <Button Content="Обновить" />
                     <Button Content="Назначить сотрудника" />
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Утилизация">
-                <StackPanel>
-                    <ListView></ListView>
                     <Button Content="Утилизировать" />
+
                 </StackPanel>
             </TabItem>
+            
 
         </TabControl>
 
