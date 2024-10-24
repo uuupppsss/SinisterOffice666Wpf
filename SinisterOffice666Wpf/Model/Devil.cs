@@ -23,6 +23,6 @@ public partial class Devil
 
     public override string ToString()
     {
-        return "Ник: " + Nick + "РангЖ " + Rank + "Год: " + Year;
+        return "Ник: " + Nick + "Ранг: " + Rank + "Год: " + Year;
     }
 }
