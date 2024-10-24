@@ -36,7 +36,18 @@ namespace SinisterOffice666Wpf
 
         private async void GetDevilsList()
         {
-            Devils = await httpClient.GetFromJsonAsync<List<Devil>>("DevilsController/GetDevils");
+            Devils = await httpClient.GetFromJsonAsync<List<Devil>>("Devils/GetDevils");
+        }
+
+        private async void GetRacksList()
+        {
+            Racks = await httpClient.GetFromJsonAsync<List<Rack>>("Racks/GetRacks");
+        }
+
+        private void CreateDevil_Click(object sender, RoutedEventArgs e)
+        {
+            Window win=new CreateDevilWin();
+            win.ShowDialog();
         }
     }
 }
