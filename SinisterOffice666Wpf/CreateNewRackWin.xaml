@@ -1,0 +1,20 @@
+﻿<Window x:Class="SinisterOffice666Wpf.CreateNewRackWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SinisterOffice666Wpf"
+        mc:Ignorable="d"
+        Title="CreateNewRackWin" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Название"/>
+            <TextBox Text="{Binding Nick}"/>
+            <TextBlock Text="Ранг"/>
+            <TextBox Text="{Binding Rank}"/>
+            <TextBlock Text="Год"/>
+            <TextBox Text="{Binding Year}"/>
+            <Button Content="Добавить" Width="150" Margin="30" Click="CreateDevil_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

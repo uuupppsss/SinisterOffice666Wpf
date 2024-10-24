@@ -32,7 +32,9 @@ namespace SinisterOffice666Wpf
         private void CreateDevil_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(Nick) || Rank == 0 || Year == 0)
-                return;
+            {
+                MessageBox.Show("Заполните все поля!!! ;>");
+            }
             Devil devil = new Devil() { Nick=Nick,Rank=Rank,Year=Year};
         }
     }

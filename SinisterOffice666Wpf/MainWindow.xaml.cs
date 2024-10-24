@@ -49,5 +49,10 @@ namespace SinisterOffice666Wpf
             Window win=new CreateDevilWin();
             win.ShowDialog();
         }
+
+        private void CreateNewRack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

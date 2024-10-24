@@ -40,7 +40,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button Content="Добавить новый" />
+                    <Button Content="Добавить новый" Click="CreateNewRack_Click"/>
                     <Button Content="Обновить" />
                     <Button Content="Назначить сотрудника" />
                     <Button Content="Утилизировать" />
