@@ -5,13 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using SinisterOffice666Wpf.ViewModel;
 
 namespace SinisterOffice666Wpf
 {
@@ -20,22 +14,13 @@ namespace SinisterOffice666Wpf
     /// </summary>
     public partial class CreateDevilWin : Window
     {
-        public string Nick { get; set; }
-        public int Rank { get; set; }
-        public int Year { get; set; }
+
         public CreateDevilWin()
         {
             InitializeComponent();
-            DataContext=this;
+            DataContext=new CreateDevilWinVM();
         }
 
-        private void CreateDevil_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(Nick) || Rank == 0 || Year == 0)
-            {
-                MessageBox.Show("Заполните все поля!!! ;>");
-            }
-            Devil devil = new Devil() { Nick=Nick,Rank=Rank,Year=Year};
-        }
+
     }
 }

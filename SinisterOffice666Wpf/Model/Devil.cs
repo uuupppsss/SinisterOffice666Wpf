@@ -20,4 +20,9 @@ public partial class Devil
     public int Year { get; set; }
 
     public virtual ICollection<Rack> Racks { get; set; } = new List<Rack>();
+
+    public override string ToString()
+    {
+        return "Ник: " + Nick + "РангЖ " + Rank + "Год: " + Year;
+    }
 }

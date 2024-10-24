@@ -14,7 +14,7 @@
             <TextBox Text="{Binding Rank}"/>
             <TextBlock Text="Год"/>
             <TextBox Text="{Binding Year}"/>
-            <Button Content="Добавить" Width="150" Margin="30" Click="CreateDevil_Click"/>
+            <Button Content="Добавить" Width="150" Margin="30" />
         </StackPanel>
     </Grid>
 </Window>
