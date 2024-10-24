@@ -7,7 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="18*"/>
+        </Grid.RowDefinitions>
+        <Button Content="Обновить данные" Width="200" HorizontalAlignment="Left" Command="{Binding UpdateData}"/>
+        <TabControl Grid.Column="0" Grid.RowSpan="2" Grid.Row="1">
             <TabItem Header="Сотрудники" >
                 <StackPanel>
                     <ListView ItemsSource="{Binding Devils}" SelectedItem="{Binding SelectedDevil}"/>
@@ -27,19 +32,17 @@
                                     <TextBlock Text="{Binding YearBuy}"/>
                                     <TextBlock Text="{Binding UseCount}"/>
                                     <TextBlock Text="{Binding CurrentCount}"/>
-                                </StackPanel>                                
+                                </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                     <Button Content="Добавить новый"/>
                     <Button Content="Обновить" />
-                    <Button Content="Назначить сотрудника" />
                     <Button Content="Утилизировать" />
+
 
                 </StackPanel>
             </TabItem>
-            
-
         </TabControl>
 
         

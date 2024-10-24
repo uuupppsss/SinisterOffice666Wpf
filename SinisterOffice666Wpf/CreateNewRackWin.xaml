@@ -9,12 +9,17 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="Название"/>
-            <TextBox Text="{Binding Nick}"/>
-            <TextBlock Text="Ранг"/>
-            <TextBox Text="{Binding Rank}"/>
-            <TextBlock Text="Год"/>
-            <TextBox Text="{Binding Year}"/>
-            <Button Content="Добавить" Width="150" Margin="30" />
+            <TextBox Text="{Binding Title}"/>
+            <TextBlock Text="Год покупки"/>
+            <TextBox Text="{Binding YearBuy}"/>
+            <TextBlock Text="Кол-во использований"/>
+            <TextBox Text="{Binding UseCount}"/>
+            <TextBlock Text="Макс. ол-во использований"/>
+            <TextBox Text="{Binding CurrentCount}"/>
+            <TextBlock Text="Ответственный"/>
+            <TextBlock Text="{Binding SelectedDevil.Nick}"/>
+            <ComboBox ItemsSource="{Binding Devils}" SelectedItem="{Binding SelectedDevil}"/>
+            <Button Content="Сохранить" Width="150" Margin="30" />
         </StackPanel>
     </Grid>
 </Window>

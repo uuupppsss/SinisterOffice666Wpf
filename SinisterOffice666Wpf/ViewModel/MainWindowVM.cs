@@ -9,9 +9,9 @@ namespace SinisterOffice666Wpf.ViewModel
     public class MainWindowVM:BaseVM
     {
         private readonly SinisterService sinisterServise;
-        private ObservableCollection<Devil> _devils;
+        private List<Devil> _devils;
 
-        public ObservableCollection<Devil> Devils
+        public List<Devil> Devils
         {
             get => _devils; 
             set 
@@ -33,21 +33,53 @@ namespace SinisterOffice666Wpf.ViewModel
             }
         }
 
+        private Rack _selectedRack;
+
+        public Rack SelectedRack
+        {
+            get =>_selectedRack; 
+            set 
+            { 
+                _selectedRack = value; 
+                Signal();
+            }
+        }
+
+        private List<Rack> _racks;
+
+        public List<Rack> Racks
+        {
+            get => _racks; 
+            set 
+            {
+                _racks = value; 
+                Signal() ;
+            }
+        }
 
         public MyCommand CreateDevilCommand { get; set; }
         public MyCommand UpdateDevilCommand { get; set; }
         public MyCommand RemoveDevilCommand {  get; set; }
 
+        public MyCommand CreateRackCommand { get; set; }
+        public MyCommand UpdateRackCommand { get; set; }
+        public MyCommand RemoveRackCommand { get; set; }
+
+        public MyCommand UpdateData {  get; set; }
+
         public MainWindowVM()
         {
             sinisterServise = new SinisterService();
-            Devils = new ObservableCollection<Devil>();
-           // LoadDevils();
+            Devils = new List<Devil>();
+            
+            LoadData();
 
             CreateDevilCommand = new MyCommand(() =>
             {
+                SinisterService.SelectedDevil = null;
                 var win = new CreateDevilWin();
                 win.ShowDialog();
+                
             });
 
             UpdateDevilCommand = new MyCommand(() =>
@@ -58,7 +90,7 @@ namespace SinisterOffice666Wpf.ViewModel
                     return;
                 }
 
-                sinisterServise.SelectedDevil = SelectedDevil;
+                SinisterService.SelectedDevil = SelectedDevil;
                 var win = new CreateDevilWin();
                 win.ShowDialog();
             });
@@ -70,23 +102,64 @@ namespace SinisterOffice666Wpf.ViewModel
                     MessageBox.Show("Выберите сотрудника для удаления");
                     return;
                 }
-                //RemoveDevil(SelectedDevil);
+                RemoveDevil(SelectedDevil);
+            });
+
+            CreateRackCommand = new MyCommand(() =>
+            {
+                SinisterService.SelectedRack = null;
+                var win = new CreateDevilWin();
+                win.ShowDialog();
+                
+            });
+
+            UpdateRackCommand = new MyCommand(() =>
+            {
+                if (SelectedRack == null)
+                {
+                    MessageBox.Show("Выберите стеллаж для изменения");
+                    return;
+                }
+
+                SinisterService.SelectedRack = SelectedRack;
+                var win = new CreateNewRackWin();
+                win.ShowDialog();
+            });
+
+            RemoveRackCommand = new MyCommand(() =>
+            {
+                if (SelectedRack == null)
+                {
+                    MessageBox.Show("Выберите стеллаж для удаления");
+                    return;
+                }
+                RemoveRack(SelectedRack);
+            });
+
+            UpdateData = new MyCommand(() =>
+            {
+                LoadData();
             });
         }
 
-        private async void LoadDevils()
+        private async void LoadData()
         {
             var devils = await sinisterServise.GetDevilsAsync();
-            foreach (var devil in devils)
-            {
-                Devils.Add(devil);
-            }
+            Devils = devils;
+            var racks = await sinisterServise.GetRacksAsync();
+            Racks = racks;
         }
 
-        public async void RemoveDevil(Devil devil)
+
+
+        private async void RemoveDevil(Devil devil)
         {
             await sinisterServise.DeleteDevilAsync(devil.Id);
-            Devils.Remove(devil);
+        }
+
+        private async void RemoveRack(Rack rack)
+        {
+            await sinisterServise.DisposeRackAsync(rack);
         }
 
     }
